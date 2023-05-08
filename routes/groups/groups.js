@@ -32,8 +32,7 @@ router.get("/groups/:id/edit", async (req, res) => {
 
 router.post("/groups", upload.single("groupImage"), async (req, res) => {
   const { groupName, groupDescription, website } = req.body;
-  const filename = req.file.filename;
-  const url = req.file.path;
+
   const admin = await Admin.findOne({ userId: req.user._id });
 
   const group = new Group({
@@ -41,11 +40,14 @@ router.post("/groups", upload.single("groupImage"), async (req, res) => {
     description: groupDescription,
     website: website,
     admin: admin._id,
-    posterimage: {
-      url: url,
-      filename: filename,
-    },
   });
+
+  if (req.file) {
+    group.posterimage = {
+      url: req.file.path,
+      filename: req.file.filename,
+    };
+  }
 
   await group.save();
 

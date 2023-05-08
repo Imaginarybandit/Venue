@@ -67,11 +67,14 @@ router.post(
       date: req.body.date,
       time: req.body.time,
       location: req.body.localizacion,
-      image: {
+    });
+
+    if (req.file) {
+      publicacion.image = {
         url: req.file.path,
         filename: req.file.filename,
-      },
-    });
+      };
+    }
 
     publicacion.group = groupId;
 
@@ -112,6 +115,7 @@ router.patch(
       title: title,
       description: description,
       location: localizacion,
+      date: date,
     });
 
     //if req.file exists, put the new image

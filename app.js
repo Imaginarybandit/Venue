@@ -30,7 +30,7 @@ const User = require("./models/user");
 const savedPublications = require("./routes/savedPublications/savedPublications");
 //"mongodb://localhost:27017/PFdummy"
 //process.env.DBURL
-const dbUrl = "mongodb://localhost:27017/PFdummy";
+const dbUrl = "mongodb://127.0.0.1/PFdummy";
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

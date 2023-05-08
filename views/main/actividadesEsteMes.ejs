@@ -7,7 +7,7 @@
       class="featured_content d-flex flex-row justify-content-center"
     >
       <!-- Aqui iran las cajas individuales -->
-      <% for(let i = 0; i< 8;i ++){ %>
+      <%if(groups.length > 0){%> <% for(let i = 0; i< groups.length;i ++){ %>
       <div class="itemBox mx-2 search d-flex flex-column">
         <div class="activityImage mx-auto">
           <img class="picture img-fluid" src="/img/ex4.jpg" alt="" />
@@ -23,7 +23,7 @@
           <div class="itemBoxOtherText"><%= groups[i].description%></div>
         </div>
       </div>
-      <%}%>
+      <%}}%>
     </div>
   </div>
 </div>

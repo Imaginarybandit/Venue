@@ -5,11 +5,10 @@ const PublicationSchema = new Schema({
   title: {
     type: String,
     required: true,
-    unique: true,
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   date: {
     type: Date,

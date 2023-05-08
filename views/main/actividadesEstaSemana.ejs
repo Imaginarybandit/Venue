@@ -5,7 +5,8 @@
   <div id="featured" class="featured">
     <div id="featured_content" class="featured_content d-flex flex-row justify-content-center">
       <!-- Aqui iran las cajas individuales -->
-<% for(let i = 0; i < 8;i ++){ %>
+      <%if(publications.length > 0){%>
+<% for(let i = 0; i < publications.length;i ++){ %>
   <div class="itemBox mx-2 search d-flex flex-column">
     <div class="activityImage ">
       <img class="picture " src="<%= publications[i].image.url%>" alt="" />
@@ -24,7 +25,7 @@
       <div  class="itemBoxOtherText" ><%=publications[i].location%></div>
     </div>
   </div>
-      <%}%>
+      <%}}%>
       </div>
     </div>
   </div>

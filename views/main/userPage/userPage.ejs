@@ -3,7 +3,7 @@
 	<div class="container d-flex flex-column justify-content-center align-items-center">
 		
 			<div class="">
-				<h1 class="mt-4"><%= user.username%></h1>
+				<h1 class="mt-4 headerColor"><%= user.username%></h1>
 				
 				<div class="card mt-3">
 					<div class="card-header">
@@ -12,27 +12,32 @@
 					<div class="card-body">
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">Email: <%= user.email%></li>
-							<li class="list-group-item">Phone: 555-555-5555</li>
+							<li class="list-group-item">Phone: <%=user.phone%></li>
 							
 							<li class="list-group-item">City: <%= user.city%></li>
 							
 						</ul>
 					</div>
 				</div>
+        
+          <a href="/profile/edit" class="btn btn-warning mt-2">Editar Perfil</a>
         <% if(user.isAdmin !== true){ %>
           <div class="align-self-start my-4">
                <!-- Create a form with post  -->
-               <form action= "/admin/<%=user._id%>" method="POST">
+               <form action= "/admin/<%=user._id%>" method="POST" class="d-inline">
                    <button type="submit" class="btn btn-success">Upgrade to admin</a>
                </form>
                
            </div>
            <% } else {%>
-           <div class="align-self-start my-4">
+           <div class="align-self-start my-4" class="d-inline">
                <a href="/groups/new" class="btn btn-primary">Create a new group</a>
            </div>
          
            <% } %>
+
+         
+          
 			</div>
 
 	</div>
@@ -41,7 +46,7 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
         
             <div class="">
-                <h2><%=user.username%>'s Groups</h2>
+                <h2 class="headerColor">Grupos de <%=user.username%></h2>
                 <% if(user.isAdmin){ %>
                     <% for (let i = 0; i < admin.groups.length; i++) { %>
     

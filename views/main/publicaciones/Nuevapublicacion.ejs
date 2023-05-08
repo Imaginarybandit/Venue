@@ -10,17 +10,18 @@
         enctype="multipart/form-data"
       >
         <div class="form-group">
-          <label for="postTitle">Title</label>
+          <label for="postTitle">Nombre</label>
           <input
             type="text"
             class="form-control"
             id="postTitle"
             name="title"
             placeholder="Enter post title"
+            required
           />
         </div>
         <div class="form-group">
-          <label for="postContent">Post description</label>
+          <label for="postContent">Descripcion</label>
           <textarea
             class="form-control"
             id="postContent"
@@ -31,13 +32,14 @@
         </div>
 
         <div class="form-group">
-          <label for="postDate">Date</label>
+          <label for="postDate">Fecha</label>
           <input
             type="date"
             class="form-control"
             id="postDate"
             name="date"
             placeholder="Enter post date"
+            required
           />
         </div>
 
@@ -60,6 +62,7 @@
             id="postLocalizacion"
             name="localizacion"
             placeholder="Enter post group"
+            required
           />
         </div>
 
