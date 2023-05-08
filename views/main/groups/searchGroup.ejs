@@ -1,0 +1,55 @@
+<% layout('./layouts/boilerplate') %>
+<div class="container d-flex flex-column justify-content-center">
+  <!--Make a  search bar with bootstrap classes-->
+  <div
+    id="searchBanner"
+    class="mx-auto searchBanner d-flex flex-column justify-content-center px-5 my-4"
+  >
+    <form
+      id="searchGroup"
+      class="form-block searchGroup"
+      method="get"
+      action="/groups/search"
+    >
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+          name="search"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="submit"
+          id="button-addon2"
+        >
+          Button
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="preLoadedCont" class="preloadedBoxes mx-auto">
+    <%for(let group of groups){%>
+
+    <div class="itemBox search d-flex flex-column mx-2 mb-3">
+      <div class="activityImage mx-auto">
+        <img class="picture img-fluid" src="/img/ex2.jpg" alt="" />
+      </div>
+
+      <div class="itemBoxContent px-4">
+        <div class="itemBoxContentTitle mt-4">
+          <a class="itemTitle" href="/groups/<%=group._id%>"
+            ><b><h5 id="actTitle"><%= group.name %></h5></b></a
+          >
+        </div>
+
+        <div class="itemBoxOtherText"><%=group.description%></div>
+      </div>
+    </div>
+
+    <%}%>
+  </div>
+  <div id="results" class="preloadedBoxes mx-auto"></div>
+</div>

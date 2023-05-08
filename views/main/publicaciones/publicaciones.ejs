@@ -1,0 +1,133 @@
+<% layout('./layouts/boilerplate') %>
+<div class="container d-flex flex-column justify-content-center">
+  <!--Make a  search bar with bootstrap classes-->
+  <div
+    id="searchBanner"
+    class="mx-auto searchBanner d-flex flex-column justify-content-center px-5 my-4"
+  >
+    <form
+      id="searchPublicaciones"
+      class="form-block searchGroup"
+      method="get"
+      action="/publicaciones/search"
+    >
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+          name="search"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="submit"
+          id="button-addon2"
+        >
+          Button
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="preLoaded" class="preloadedBoxes mx-auto">
+    <%for(let publicacion of publicaciones){%>
+
+    <div class="itemBox search d-flex flex-column mx-2 mb-3">
+      <div class="activityImage mx-auto">
+        <img
+          class="picture img-fluid"
+          src="<%= publicacion.image.url%>"
+          alt=""
+        />
+      </div>
+
+      <div class="itemBoxContent px-4">
+        <div class="itemBoxContentTitle mt-1">
+          <a class="itemTitle" href="/publicacion/<%=publicacion._id%>"
+            ><b><h5 id="actTitle"><%=publicacion.title%></h5></b></a
+          >
+        </div>
+        <div class="Bygroup">
+          <a href="/groups/<%=publicacion.group.id%>">
+            <b>By: <%=publicacion.group.name%></b>
+          </a>
+        </div>
+        <div class="itemBoxOtherText mb-1"><%=publicacion.description%></div>
+        <div id="date" class="itemBoxOtherText" value="<%=publicacion.date%>">
+          <%=publicacion.date%>
+        </div>
+        <div class="itemBoxOtherText"><%=publicacion.location%></div>
+      </div>
+    </div>
+
+    <%}%>
+  </div>
+  <div id="results" class="preloadedBoxes mx-auto"></div>
+</div>
+<script>
+  const publiDate = document.querySelectorAll("#date");
+  for (let i = 0; i < publiDate.length; i++) {
+    const dateString = publiDate[i].getAttribute("value");
+    const date = new Date(dateString);
+
+    const days = [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miercoles",
+      "Jueves",
+      "Viernes",
+      "Sabado",
+    ];
+
+    const months = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+
+    const day = days[date.getDay()];
+
+    const month = months[date.getMonth()];
+
+    const year = date.getFullYear();
+
+    const dayOfMonth = date.getDate();
+
+    const hours = date.getHours();
+
+    const minutes = date.getMinutes();
+
+    const normalHours = (hours) => {
+      if (hours > 12) {
+        return hours - 12;
+      } else {
+        return hours;
+      }
+    };
+
+    const pmAm = (hours) => {
+      if (hours > 12) {
+        return "PM";
+      } else {
+        return "AM";
+      }
+    };
+
+    publiDate[
+      i
+    ].innerHTML = ` ${dayOfMonth} de ${month},${year} a las ${normalHours(
+      hours
+    )}:${minutes} ${pmAm(hours)} `;
+  }
+</script>

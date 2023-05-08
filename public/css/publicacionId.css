@@ -1,0 +1,11 @@
+.pubTitl,.pubGName{
+    color:#e9ecef;
+}
+
+.pubGName{
+    text-decoration: none;
+}
+
+.pubCont h2,h3,p {
+    color: #e9ecef;
+}
