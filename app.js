@@ -26,6 +26,8 @@ const publicacionesRouter = require("./routes/publicaciones/publicaciones");
 const profileRouter = require("./routes/user/user");
 const adminRouter = require("./routes/user/admin");
 const gelleryRouter = require("./routes/gallery/gallery");
+const notificationsRouter = require("./routes/notifications/notifications");
+//const error = require("./routes/error/error");
 const User = require("./models/user");
 const savedPublications = require("./routes/savedPublications/savedPublications");
 //"mongodb://localhost:27017/PFdummy"
@@ -95,35 +97,18 @@ app.use("/", profileRouter);
 app.use("/", adminRouter);
 app.use("/", savedPublications);
 app.use("/", gelleryRouter);
+app.use("/", notificationsRouter);
 
-// const transporter = nodemailer.createTransport({
-//   service: "outlook",
-//   auth: {
-//     user: "marcos.santiago1@outlook.com",
-//     pass: "Caimito#1995",
-//   },
-// });
-
-// const mailOptions = {
-//   from: "marcos.santiago1@outlook.com",
-//   to: "revolvingbird@gmail.com",
-//   subject: "Test Email",
-//   text: "This is a test email sent using Nodemailer and Express.js!",
-// };
-
-// transporter.sendMail(mailOptions, function (error, info) {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log("Email sent: " + info.response);
-//   }
-// });
-
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
-});
+//create an error route
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
-  res.status(statusCode).send(message);
+
+  res.status(statusCode || 500).render("main/error/error", {
+    message: message,
+  });
+});
+
+app.listen(3000, () => {
+  console.log("Server started on port 3000");
 });

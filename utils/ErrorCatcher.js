@@ -4,3 +4,6 @@ const catchAsync = (fn) => {
     fn(req, res, next).catch(next);
   };
 };
+
+//export the middleware
+module.exports = catchAsync;

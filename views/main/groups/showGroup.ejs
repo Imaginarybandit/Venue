@@ -5,10 +5,17 @@
   <div
     class=" container-fluid d-flex flex-column justify-content-center align-items-center"
   >
+
+  
+  <% if(group.posterimage.url !== undefined) {%>
     <div id="titleImage" class="my-5 titleImage">
       <img class="posterImg" src="<%= group.posterimage.url %>" alt="Group Image" />
     </div>
-
+<%}else{%>
+    <div class="EmptitleImage" >
+      <h3 class="mt-5">Aqui estara la imagen</h3>
+    </div>
+<%}%>
     <!-- Make a div for the group name -->
     <div class="nameAndDescription mb-5">
       <div class="nameCreateActivity d-flex flex-row justify-content-between mb-3">
@@ -38,6 +45,10 @@
         <p>
           <%=group.description %>
         </p>
+      </div>
+      <div>
+        <p><%=group.phone%></p>
+        <p><%=group.email%></p>
       </div>
     </div>
 <div id="actYGal" class="row actYGal">

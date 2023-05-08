@@ -4,13 +4,17 @@
   <div id="featured2" class="featured">
     <div
       id="featured_content2"
-      class="featured_content d-flex flex-row justify-content-center"
+      class="featured_content d-flex flex-row justify-content-start"
     >
       <!-- Aqui iran las cajas individuales -->
       <%if(groups.length > 0){%> <% for(let i = 0; i< groups.length;i ++){ %>
       <div class="itemBox mx-2 search d-flex flex-column">
         <div class="activityImage mx-auto">
-          <img class="picture img-fluid" src="/img/ex4.jpg" alt="" />
+          <img
+            class="picture img-fluid"
+            src="<%=groups[i].posterimage.url%>"
+            alt=""
+          />
         </div>
 
         <div class="itemBoxContent px-4">

@@ -29,7 +29,7 @@ search.addEventListener("submit", async (e) => {
     const div2 = document.createElement("div");
     div2.classList.add("activityImage", "mx-auto");
     const img = document.createElement("img");
-    img.src = "/img/ex2.jpg";
+    img.src = `${group.posterimage.url}`;
     img.classList.add("picture", "img-fluid");
     div2.appendChild(img);
     div1.appendChild(div2);

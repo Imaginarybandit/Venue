@@ -10,13 +10,13 @@
             <% if(user){ %> <% if(user._id.toString() ===
             admin.userId.toString()){ %>
             <a href="/publicacion/<%=publicacion._id%>/edit"
-              ><button class="btn btn-warning">Edit</button></a
+              ><button class="btn btn-warning">Editar</button></a
             >
 
             <form
               class="d-inline"
-              action="/publicacion/<%=publicacion._id%>/edit"
-              method="GET"
+              action="/publicacion/<%=publicacion._id%>?_method=DELETE"
+              method="POST"
             >
               <input
                 type="text"
@@ -24,7 +24,7 @@
                 value="<%= publicacion._id%>"
                 name="publicationId"
               />
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger">Eliminar</button>
             </form>
             <%}}%>
             <form
@@ -64,12 +64,19 @@
         >
 
         <div class="mb-4 pubCont">
-          <img
-            src="<%=publicacion.image.url%>"
-            class="img-fluid"
-            alt="Responsive image"
-          />
-
+          <% if(publicacion.image.url ){ %>
+          <div class="imageSizeBox">
+            <img
+              src="<%=publicacion.image.url%>"
+              class="img-fluid"
+              alt="Responsive image"
+            />
+          </div>
+          <% } else {%>
+          <div class="empimageSizeBox">
+            <h3>Aqui estara la imagen</h3>
+          </div>
+          <% } %>
           <h2 class="mb-4">Descripcion</h2>
           <p class="mb-4"><%=publicacion.description%></p>
           <h3 class="mb-4">Fecha</h3>

@@ -12,3 +12,17 @@ h3,
 p {
   color: #e9ecef;
 }
+
+.empimageSizeBox {
+  max-width: 100%;
+  width: 600px;
+  height: 400px;
+  border: solid 1px #e9ecef;
+}
+
+.imageSizeBox {
+  max-width: 700px;
+  max-height: 500px;
+  object-fit: cover;
+  overflow: hidden;
+}

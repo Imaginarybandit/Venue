@@ -22,14 +22,15 @@ router.get("/profile/edit", async (req, res) => {
 router.patch("/profile/edit/:id", async (req, res) => {
   const { id } = req.params;
 
-  const { username, name, surname, city, phone } = req.body;
-
+  const { username, name, surname, city, phone, email } = req.body;
+  console.log(req.body);
   if (username === req.user.username) {
     const user = await User.findByIdAndUpdate(id, {
       name,
       surname,
       city,
       phone,
+      email,
     });
     res.redirect("/profile");
   } else {
@@ -39,6 +40,7 @@ router.patch("/profile/edit/:id", async (req, res) => {
       surname,
       city,
       phone,
+      email,
     });
     res.redirect("/");
   }
