@@ -1,0 +1,33 @@
+<%- layout('./layouts/boilerplate') %>
+
+<div
+  class="container main d-flex flex-row justify-content-center align-items-center"
+>
+  <div class="card text-center py-5 px-5">
+    <h1 class="mb-4">Login</h1>
+
+    <form action="/login" method="POST">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Username"
+        /><br /><br />
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+        /><br /><br />
+      </div>
+
+      <input class="btn btn-primary" type="submit" value="Login" />
+    </form>
+  </div>
+</div>

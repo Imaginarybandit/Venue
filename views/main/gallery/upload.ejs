@@ -1,0 +1,28 @@
+<% layout('./layouts/boilerplate') %>
+<!-- Make a form for uploading images -->
+<!-- Make sure to set the method to POST and the enctype to multipart/form-data -->
+<div class="container">
+  <h1>Upload your images to the gallery</h1>
+  <form action="/upload/<%= id %>" method="post" enctype="multipart/form-data">
+    <!-- Create a div for inserting an image -->
+
+    <div class="input-group">
+      <input
+        type="file"
+        class="form-control"
+        name="galleryImage"
+        id="galleryImage"
+        aria-describedby="inputGroupFileAddon04"
+        aria-label="Upload"
+        multiple
+      />
+      <button
+        class="btn btn-outline-secondary"
+        type="submit"
+        id="inputGroupFileAddon04"
+      >
+        Button
+      </button>
+    </div>
+  </form>
+</div>

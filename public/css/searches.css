@@ -1,0 +1,22 @@
+.searchBanner{
+max-width: 1000px;
+max-height: 350px;
+height: 300px;
+}
+
+.searchBanner{
+    width:100%;
+    background-color: #E9C46A;
+    
+}
+
+.preloadedBoxes{
+width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+
+}
+

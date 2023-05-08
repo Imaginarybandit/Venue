@@ -1,0 +1,29 @@
+<h2 id="tituloDeFeatured2" class="tituloDeFeatured">Grupos destacados</h2>
+
+<div class="container-fluid d-flex flex-row justify-content-center">
+  <div id="featured2" class="featured">
+    <div
+      id="featured_content2"
+      class="featured_content d-flex flex-row justify-content-center"
+    >
+      <!-- Aqui iran las cajas individuales -->
+      <% for(let i = 0; i< 8;i ++){ %>
+      <div class="itemBox mx-2 search d-flex flex-column">
+        <div class="activityImage mx-auto">
+          <img class="picture img-fluid" src="/img/ex4.jpg" alt="" />
+        </div>
+
+        <div class="itemBoxContent px-4">
+          <div class="itemBoxContentTitle mt-2">
+            <a class="itemTitle" href="/groups/<%=groups[i]._id%>"
+              ><b><h5 id="actTitle"><%=groups[i].name%></h5></b></a
+            >
+          </div>
+
+          <div class="itemBoxOtherText"><%= groups[i].description%></div>
+        </div>
+      </div>
+      <%}%>
+    </div>
+  </div>
+</div>
