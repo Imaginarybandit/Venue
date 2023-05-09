@@ -52,14 +52,18 @@ router.get(
       );
       const group = await Group.findById(publicacion.group._id);
       const admin = await Admin.findById(group.admin);
-
-      console.log(admin, group);
-      res.render("main/publicaciones/publicacionConId", { publicacion, admin });
+      console.log(req.flash());
+      res.render("main/publicaciones/publicacionConId", {
+        publicacion,
+        admin,
+      });
     } else {
       const publicacion = await Publicacion.findById(req.params.id).populate(
         "group"
       );
-      res.render("main/publicaciones/publicacionConId", { publicacion });
+      res.render("main/publicaciones/publicacionConId", {
+        publicacion,
+      });
     }
   })
 );
@@ -164,6 +168,7 @@ router.patch(
       });
     }
     publicacion.save();
+    req.flash("success", "Publicacion actualizada");
     res.redirect(`/publicacion/${id}`);
   })
 );

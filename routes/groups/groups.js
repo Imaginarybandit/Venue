@@ -79,7 +79,7 @@ router.post(
 
     admin.groups.push(group._id);
     await admin.save();
-
+    req.flash("success", "Grupo creado exitosamente");
     res.redirect(`/groups/${group._id}`);
   })
 );
@@ -125,7 +125,7 @@ router.delete(
     const admin = await Admin.findOne({ groups: id });
     admin.groups.pull(id);
     await admin.save();
-
+    req.flash("success", "Grupo eliminado exitosamente");
     res.redirect("/profile");
   })
 );
@@ -156,7 +156,7 @@ router.patch(
         },
       });
     }
-
+    req.flash("success", "Grupo actualizado exitosamente");
     res.redirect("/groups/" + id);
   })
 );

@@ -1,5 +1,6 @@
 <% layout('./layouts/boilerplate') %>
 <div class="container d-flex flex-column align-items-center">
+  <%- include('../../partials/flash') %>
   <h1 class="my-4 headerColor">Publicaciones Guardadas</h1>
   <%for(let publications of savedPublication){%>
   <div class="card mb-3">

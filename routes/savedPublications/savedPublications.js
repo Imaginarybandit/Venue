@@ -37,6 +37,7 @@ router.post(
     const user = await users.findById(req.user._id);
     user.savedPublications.push(newSavedPublication);
     await user.save();
+    req.flash("success", "Publicacion guardada exitosamente");
     res.send(newSavedPublication);
   })
 );
@@ -49,7 +50,7 @@ router.delete(
     const publicationId = req.body.publicationId;
     //find the saved publication and removed it from the savedPublication list
     const savedPublication = await savedPublications.findByIdAndDelete(id);
-
+    req.flash("success", "Publicacion eliminada exitosamente");
     res.redirect("/getSavedPublications");
   })
 );

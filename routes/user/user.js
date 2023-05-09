@@ -48,6 +48,7 @@ router.patch(
         phone,
         email,
       });
+      req.flash("success", "Su perfil ha sido actualizado");
       res.redirect("/profile");
     } else {
       const user = await User.findByIdAndUpdate(id, {
@@ -58,6 +59,7 @@ router.patch(
         phone,
         email,
       });
+      req.flash("success", "Su perfil ha sido actualizado");
       res.redirect("/");
     }
   })
