@@ -3,14 +3,14 @@
   <div class="row">
     <div class="col-lg-8">
       <!-- Main Content -->
-      <h1 class="mb-4">Create New Publication</h1>
+      <h1 class="mb-4 headerColor">Create New Publication</h1>
       <form
         action="/<%=groupId%>/publicacion/new"
         method="POST"
         enctype="multipart/form-data"
       >
         <div class="form-group">
-          <label for="postTitle">Nombre</label>
+          <label for="postTitle" class="headerColor">Nombre</label>
           <input
             type="text"
             class="form-control"
@@ -21,7 +21,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="postContent">Descripcion</label>
+          <label for="postContent" class="headerColor">Descripcion</label>
           <textarea
             class="form-control"
             id="postContent"
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-          <label for="postDate">Fecha</label>
+          <label for="postDate" class="headerColor">Fecha</label>
           <input
             type="date"
             class="form-control"
@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-          <label for="postImage">Image</label>
+          <label for="postImage" class="headerColor">Image</label>
           <input
             type="file"
             class="form-control"
@@ -55,7 +55,7 @@
         </div>
 
         <div class="form-group">
-          <label for="postLocalizacion">Localizacion</label>
+          <label for="postLocalizacion" class="headerColor">Localizacion</label>
           <input
             type="text"
             class="form-control"

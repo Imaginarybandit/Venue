@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Admin = require("../../models/admin");
 const User = require("../../models/user");
-const catchAsync = require("../../utils/catchAsync");
+const catchAsync = require("../../utils/ErrorCatcher");
 
 router.get(
   "/profile",
