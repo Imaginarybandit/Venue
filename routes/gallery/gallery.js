@@ -6,7 +6,6 @@ const { storage, cloudinary } = require("../../cloudinary");
 const upload = multer({ storage });
 const catchAsync = require("../../utils/ErrorCatcher");
 const Gallery = require("../../models/gallery");
-const gallery = require("../../models/gallery");
 
 router.get(
   "/upload/:id",

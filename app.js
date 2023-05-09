@@ -16,6 +16,7 @@ const nodemailer = require("nodemailer");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const MongoDBStore = require("connect-mongo");
+const mongoSanitize = require("express-mongo-sanitize");
 
 const Mainpagerouter = require("./routes/mainpage/mainpage");
 const userRouter = require("./routes/user/register");
@@ -32,7 +33,7 @@ const User = require("./models/user");
 const savedPublications = require("./routes/savedPublications/savedPublications");
 //"mongodb://localhost:27017/PFdummy"
 //process.env.DBURL
-const dbUrl = process.env.DBURL || "mongodb://localhost:27017/PFdummy";
+const dbUrl = "mongodb://127.0.0.1/PFdummy";
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -71,6 +72,8 @@ app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(mongoSanitize());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

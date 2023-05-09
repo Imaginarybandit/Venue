@@ -16,7 +16,12 @@
           required
         />
       </div>
-
+      <div
+        id="usernameError"
+        class="alert alert-danger"
+        role="alert"
+        style="display: none"
+      ></div>
       <div class="form-group">
         <input
           type="email"
@@ -27,6 +32,12 @@
           required
         />
       </div>
+      <div
+        id="emailError"
+        class="alert alert-danger"
+        role="alert"
+        style="display: none"
+      ></div>
 
       <div class="form-group">
         <input
@@ -44,7 +55,7 @@
           type="password"
           class="form-control"
           id="confirmPassword"
-          name="confirmPassword\"
+          name="confirmPassword"
           placeholder="confirm password"
           required
         />
@@ -87,3 +98,5 @@
     </form>
   </div>
 </div>
+
+<script src="/js/checkIfUsernameIsUnique.js"></script>

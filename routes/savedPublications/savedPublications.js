@@ -4,9 +4,16 @@ const savedPublications = require("../../models/savedPublications");
 const publications = require("../../models/publications");
 const users = require("../../models/user");
 const catchAsync = require("../../utils/ErrorCatcher");
+const {
+  validateSchema,
+} = require("../../public/middleware/joiSchemas/validateSchema");
+const {
+  savedPublicationsSchema,
+} = require("../../public/middleware/joiSchemas/savedPublicationsSchema");
 
 router.get(
   "/getSavedPublications",
+
   catchAsync(async (req, res) => {
     const savedPublication = await savedPublications
       .find({ user: req.user._id })
@@ -19,6 +26,7 @@ router.get(
 
 router.post(
   "/savePublication",
+  validateSchema(savedPublicationsSchema),
   catchAsync(async (req, res) => {
     const publicationId = req.body.publicationId;
     const newSavedPublication = new savedPublications({

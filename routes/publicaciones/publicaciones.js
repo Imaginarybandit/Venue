@@ -7,6 +7,13 @@ const multer = require("multer");
 const { storage } = require("../../cloudinary");
 const catchAsync = require("../../utils/ErrorCatcher");
 const upload = multer({ storage });
+const {
+  validateSchema,
+} = require("../../public/middleware/joiSchemas/validateSchema");
+const {
+  editPublicationSchema,
+  newPublicationSchema,
+} = require("../../public/middleware/joiSchemas/publicationSchema");
 
 //get a single activity
 router.get("/publicacion", function (req, res, next) {
@@ -69,6 +76,7 @@ router.get(
 router.post(
   "/:id/publicacion/new",
   upload.single("publicationImage"),
+  validateSchema(newPublicationSchema),
   catchAsync(async function (req, res, next) {
     const groupId = req.params.id;
 
@@ -127,6 +135,7 @@ router.delete(
 router.patch(
   "/publicacion/:id",
   upload.single("publImage"),
+  validateSchema(editPublicationSchema),
   catchAsync(async function (req, res, next) {
     const { id } = req.params;
     const { title, description, date, localizacion } = req.body;

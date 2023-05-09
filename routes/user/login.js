@@ -2,6 +2,12 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const {
+  validateSchema,
+} = require("../../public/middleware/joiSchemas/validateSchema");
+const {
+  loginSchema,
+} = require("../../public/middleware/joiSchemas/userSchema");
 
 router.get("/login", (req, res) => {
   res.render("user/login");
@@ -9,6 +15,7 @@ router.get("/login", (req, res) => {
 
 router.post(
   "/login",
+  validateSchema(loginSchema),
   passport.authenticate("local", {
     failureRedirect: "/login",
     failureFlash: true,

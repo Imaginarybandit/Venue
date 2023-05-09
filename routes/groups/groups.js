@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Joi = require("joi");
 const Group = require("../../models/groups");
 const User = require("../../models/user");
 const Admin = require("../../models/admin");
@@ -10,6 +11,13 @@ const { storage } = require("../../cloudinary");
 const upload = multer({ storage });
 const catchAsync = require("../../utils/ErrorCatcher");
 const Publication = require("../../models/publications");
+const {
+  groupSchema,
+  newGroupSchema,
+} = require("../../public/middleware/joiSchemas/groupSchema");
+const {
+  validateSchema,
+} = require("../../public/middleware/joiSchemas/validateSchema");
 
 router.get(
   "/groups",
@@ -45,7 +53,9 @@ router.get(
 
 router.post(
   "/groups",
+
   upload.single("groupImage"),
+  validateSchema(newGroupSchema),
   catchAsync(async (req, res) => {
     const { groupName, groupDescription, website } = req.body;
 
@@ -125,6 +135,7 @@ router.delete(
 router.patch(
   "/groups/:id",
   upload.single("groupImage"),
+  validateSchema(groupSchema),
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const { groupName, groupDescription, website, phone, email } = req.body;
