@@ -14,15 +14,16 @@
     <link href="/css/publicacionId.css" rel="stylesheet" />
     <link href="/css/searches.css" rel="stylesheet" />
     <link href="/css/modal.css" rel="stylesheet" />
+    <link href="/css/body.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css"
     />
 
-    <title>Document</title>
+    <title>Venue</title>
   </head>
-  <body style="background-color: #264653">
+  <body id="boilerBody">
     <%- include('../partials/navbar.ejs') %> <%- body %>
-    <%-include('../partials/scripts.ejs')%>
+    <%-include('../partials/footer.ejs')%><%-include('../partials/scripts.ejs')%>
   </body>
 </html>
