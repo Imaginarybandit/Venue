@@ -22,8 +22,6 @@ window.addEventListener("resize", () => {
     let boilerBodyBottom = boilerBody.getBoundingClientRect().bottom;
 
     let footerBottom = footer.getBoundingClientRect().bottom;
-    console.log(boilerBodyBottom - windowHeight);
-    //make a margin top for footer
 
     footer.style = `-${
       boilerBodyBottom - windowHeight + footer.clientHeight

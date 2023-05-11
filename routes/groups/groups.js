@@ -121,7 +121,7 @@ router.delete(
     publications.forEach(async (publication) => {
       await Publication.findByIdAndDelete(publication);
     });
-    //find admin by group id and remove group from admin
+
     const admin = await Admin.findOne({ groups: id });
     admin.groups.pull(id);
     await admin.save();
