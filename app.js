@@ -12,11 +12,12 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const flash = require("connect-flash");
-const nodemailer = require("nodemailer");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const MongoDBStore = require("connect-mongo");
 const mongoSanitize = require("express-mongo-sanitize");
+const geolib = require("geolib");
+const geocoder = require("geocoder");
 
 const Mainpagerouter = require("./routes/mainpage/mainpage");
 const userRouter = require("./routes/user/register");
@@ -27,6 +28,7 @@ const publicacionesRouter = require("./routes/publicaciones/publicaciones");
 const profileRouter = require("./routes/user/user");
 const adminRouter = require("./routes/user/admin");
 const gelleryRouter = require("./routes/gallery/gallery");
+const apisRouter = require("./routes/apis/apis");
 const notificationsRouter = require("./routes/notifications/notifications");
 //const error = require("./routes/error/error");
 const User = require("./models/user");
@@ -103,8 +105,7 @@ app.use("/", adminRouter);
 app.use("/", savedPublications);
 app.use("/", gelleryRouter);
 app.use("/", notificationsRouter);
-
-//create an error route
+app.use("/", apisRouter);
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;

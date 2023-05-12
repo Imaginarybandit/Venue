@@ -10,7 +10,9 @@ if (boilerBodyVh > windowHeight) {
 
   let footerBottom = footer.getBoundingClientRect().bottom;
 
-  footer.style.bottom = boilerBodyBottom - footerBottom;
+  footer.style.bottom = `-${
+    boilerBodyBottom - windowHeight + footer.clientHeight
+  }px`;
 } else {
   footer.style.bottom = 0;
 }
@@ -26,5 +28,7 @@ window.addEventListener("resize", () => {
     footer.style = `-${
       boilerBodyBottom - windowHeight + footer.clientHeight
     }px`;
+  } else if (boilerBodyVh === windowHeight) {
+    footer.style.bottom = 0;
   }
 });

@@ -7,6 +7,7 @@ const userSchema = Joi.object({
   confirmPassword: Joi.string().required(),
   name: Joi.string().required(),
   surname: Joi.string().required(),
+  zipcode: Joi.string().required(),
   city: Joi.string().required(),
 });
 
@@ -18,6 +19,7 @@ const editUserSchema = Joi.object({
   city: Joi.string().required(),
   name: Joi.string().required(),
   surname: Joi.string().required(),
+  zipcode: Joi.string().required(),
   phone: Joi.string().allow(""),
 });
 

@@ -18,8 +18,9 @@ router.post(
   "/register",
   validateSchema(userSchema),
   catchAsync(async (req, res) => {
-    const { email, username, password, name, surname, city } = req.body;
-    const newUser = new User({ email, username, name, surname, city });
+    const { email, username, password, name, surname, city, zipcode } =
+      req.body;
+    const newUser = new User({ email, username, name, surname, city, zipcode });
     const registeredUser = await User.register(newUser, password);
     req.login(registeredUser, (err) => {
       if (err) return next(err);

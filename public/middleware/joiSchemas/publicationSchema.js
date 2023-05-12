@@ -5,6 +5,8 @@ const editPublicationSchema = Joi.object({
   description: Joi.string().allow(""),
   date: Joi.string().required().required(),
   localizacion: Joi.string().required(),
+  city: Joi.string().required(),
+  zipcode: Joi.string().required(),
 }).required();
 
 const newPublicationSchema = Joi.object({
@@ -12,6 +14,8 @@ const newPublicationSchema = Joi.object({
   content: Joi.string().allow(""),
   date: Joi.string().required().required(),
   localizacion: Joi.string().required(),
+  city: Joi.string().required(),
+  zipcode: Joi.string().required(),
 }).required();
 
 module.exports = { editPublicationSchema, newPublicationSchema };

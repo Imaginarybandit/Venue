@@ -92,6 +92,8 @@ router.post(
       date: req.body.date,
       time: req.body.time,
       location: req.body.localizacion,
+      zipcode: req.body.zipcode,
+      city: req.body.city,
     });
 
     if (req.file) {
@@ -142,7 +144,7 @@ router.patch(
   validateSchema(editPublicationSchema),
   catchAsync(async function (req, res, next) {
     const { id } = req.params;
-    const { title, description, date, localizacion } = req.body;
+    const { title, description, date, localizacion, city, zipcode } = req.body;
     //find the activity by id and update it
 
     const newdate = new Date(date);
@@ -151,6 +153,8 @@ router.patch(
       title: title,
       description: description,
       location: localizacion,
+      city: city,
+      zipcode: zipcode,
     });
 
     if (newdate.toString() === "Invalid Date") {

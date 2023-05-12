@@ -28,6 +28,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  zipcode: {
+    type: String,
+    required: true,
+  },
   savedPublications: [
     {
       type: Schema.Types.ObjectId,
