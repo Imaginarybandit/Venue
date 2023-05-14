@@ -1,5 +1,6 @@
 const username = document.querySelector("#username");
 const email = document.querySelector("#email");
+const subButton = document.querySelector("#subButton");
 
 //make an event listener for username everytime it changes
 username.addEventListener("input", () => {
@@ -12,9 +13,11 @@ username.addEventListener("input", () => {
         document.querySelector("#usernameError").style = "display: block";
         document.querySelector("#usernameError").innerHTML =
           "El nombre de usuario ya existe";
+        subButton.disabled = true;
       } else {
         document.querySelector("#usernameError").style = "display: none";
         document.querySelector("#usernameError").innerHTML = "";
+        subButton.disabled = false;
       }
     });
 });
@@ -28,9 +31,11 @@ email.addEventListener("input", () => {
       if (data.status === "Email already exists") {
         document.querySelector("#emailError").style = "display: block";
         document.querySelector("#emailError").innerHTML = "El email ya existe";
+        subButton.disabled = true;
       } else {
         document.querySelector("#emailError").style = "display: none";
         document.querySelector("#emailError").innerHTML = "";
+        subButton.disabled = false;
       }
     });
 });

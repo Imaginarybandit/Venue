@@ -7,6 +7,7 @@ const { userSchema } = require("../../public/middleware/joiSchemas/userSchema");
 const {
   validateSchema,
 } = require("../../public/middleware/joiSchemas/validateSchema");
+const e = require("connect-flash");
 
 //register form
 router.get("/register", (req, res) => {
@@ -32,21 +33,38 @@ router.post(
 router.get("/checkUsername", (req, res) => {
   const { username } = req.query;
   User.findOne({ username: username }).then((result) => {
-    if (result) {
-      res.send({ status: "Username already exists" });
+    if (req.user) {
+      if (result && result.username !== req.user.username) {
+        res.send({ status: "Username already exists" });
+      } else {
+        res.send({ status: "Username is available" });
+      }
     } else {
-      res.send({ status: "Username is available" });
+      if (result) {
+        res.send({ status: "Username already exists" });
+      } else {
+        res.send({ status: "Username is available" });
+      }
     }
   });
 });
 
 router.get("/checkEmail", (req, res) => {
   const { email } = req.query;
+
   User.findOne({ email: email }).then((result) => {
-    if (result) {
-      res.send({ status: "Email already exists" });
+    if (req.user) {
+      if (result && result.email !== req.user.email) {
+        res.send({ status: "Email already exists" });
+      } else {
+        res.send({ status: "Email is available" });
+      }
     } else {
-      res.send({ status: "Email is available" });
+      if (result) {
+        res.send({ status: "Email already exists" });
+      } else {
+        res.send({ status: "Email is available" });
+      }
     }
   });
 });

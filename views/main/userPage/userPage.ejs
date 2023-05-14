@@ -23,13 +23,7 @@
         
           <a href="/profile/edit" class="btn btn-warning mt-2">Editar Perfil</a>
 
-          <div class="align-self-start my-4">
-            
-            <form action= "/location/<%=user._id%>" method="GET" class="d-inline">
-                <button type="submit" class="btn btn-success">Conviertete en admin</a>
-            </form>
-            
-        </div>
+       
         <% if(user.isAdmin !== true){ %>
           <div class="align-self-start my-4">
                <!-- Create a form with post  -->

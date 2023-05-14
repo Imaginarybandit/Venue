@@ -52,7 +52,7 @@ router.get(
       );
       const group = await Group.findById(publicacion.group._id);
       const admin = await Admin.findById(group.admin);
-      console.log(req.flash());
+      console.log(admin);
       res.render("main/publicaciones/publicacionConId", {
         publicacion,
         admin,
