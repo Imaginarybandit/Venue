@@ -14,10 +14,11 @@ router.get(
     const { data } = await axios.get(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?proximity=ip&access_token=${process.env.MAPBOX_KEY}&limit=1`
     );
+    const userLocation = data.features[0].geometry.coordinates;
 
-    const publication = await publications.find({});
+    const publication = await publications.find({}).populate("group");
 
-    //make a for loop for publication
+    const pubLocations = [];
 
     for (let i = 0; i < publication.length; i++) {
       const { city, zipcode } = publication[i];
@@ -25,23 +26,46 @@ router.get(
       const { data } = await axios.get(
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?proximity=ip&access_token=${process.env.MAPBOX_KEY}&limit=1`
       );
-      console.log(data.features[0].geometry.coordinates);
+
+      const result = {
+        location: publication[i].location,
+        image: publication[i].image,
+        group: publication[i].group,
+        date: publication[i].date,
+        title: publication[i].title,
+        city: publication[i].city,
+        coord: data.features[0].geometry.coordinates,
+        id: publication[i]._id,
+      };
+      pubLocations.push(result);
     }
 
-    const centerLocation = { latitude: 18.1395323, longitude: -67.1265472 };
+    const centerLocation = {
+      latitude: userLocation[1],
+      longitude: userLocation[0],
+    };
 
-    const locations = [
-      { name: "Guaynabo", latitude: 18.35745, longitude: -66.111 },
-      { name: "Mayaguez", latitude: 18.2011161, longitude: -67.1391124 },
-    ];
-    const maxDistance = 20000;
+    const locations = pubLocations.map((location) => {
+      return {
+        city: location.city,
+        id: location.id,
+        location: location.location,
+        image: location.image,
+        group: location.group,
+        date: location.date,
+        title: location.title,
+        latitude: location.coord[1],
+        longitude: location.coord[0],
+      };
+    });
+
+    const maxDistance = 25000;
 
     const nearbyPlaces = locations.filter((location) => {
       return geolib.isPointWithinRadius(location, centerLocation, maxDistance);
     });
-    //console.log(nearbyPlaces);
-    console.log(publication);
-    res.send(data);
+
+    res.send(nearbyPlaces);
   })
 );
 
