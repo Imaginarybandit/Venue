@@ -38,7 +38,7 @@ router.patch(
   catchAsync(async (req, res) => {
     const { id } = req.params;
 
-    const { username, name, surname, city, phone, email } = req.body;
+    const { username, name, surname, city, phone, email, zipcode } = req.body;
     console.log(req.body);
     if (username === req.user.username) {
       const user = await User.findByIdAndUpdate(id, {
@@ -47,6 +47,7 @@ router.patch(
         city,
         phone,
         email,
+        zipcode,
       });
       req.flash("success", "Su perfil ha sido actualizado");
       res.redirect("/profile");
