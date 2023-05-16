@@ -34,12 +34,26 @@ const notificationsRouter = require("./routes/notifications/notifications");
 const User = require("./models/user");
 const savedPublications = require("./routes/savedPublications/savedPublications");
 //"mongodb://localhost:27017/PFdummy"
+//"mongodb://127.0.0.1:27017/PFdummy");
 //process.env.DBURL
-const dbUrl = "mongodb://127.0.0.1:27017/PFdummy" || process.env.DBURL;
+const dbUrl = process.env.DBURL;
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+//connect mondoDB to atlas
+// const MongoClient = mongodb.MongoClient;
+// const url = process.env.DBURL;
+// const dbName = "PFdummy";
+// const client = new MongoClient(url, { useNewUrlParser: true });
+// client.connect((err) => {
+//   if (err) {
+//     console.log("Unable to connect to the mongoDB server. Error:", err);
+//   } else {
+//     console.log("Connection established to", url);
+//   }
+// });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
